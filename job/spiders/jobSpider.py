@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-04-23 11:21:01
-LastEditTime: 2021-04-23 17:25:49
+LastEditTime: 2021-04-23 17:57:32
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\spiders\jobSpider.py
@@ -31,6 +31,7 @@ class JobspiderSpider(scrapy.Spider):
             edu_v = ''
             experience = ''
             company = ""
+            url = ""
             
             # 职位名称
             title = div.xpath('./strong/span/text()').extract()[0]
@@ -60,14 +61,18 @@ class JobspiderSpider(scrapy.Spider):
             company = div.xpath('./aside/text()').extract()[0]
             # print(company)
 
+            # 详情页面
+            url = div.xpath('./@href').extract_first()
+            print(url)
+
             print(title + " | " + pay + " | " + place + " | " + experience + " | " + edu_v + " | " + company)
-            jobItem['title'] = title#.encode('utf-8')
-            jobItem['pay'] = pay#.encode('utf-8')
-            jobItem['place'] = place#.encode('utf-8')
-            jobItem['experience'] = experience#.encode('utf-8')
-            jobItem['edu_v'] = edu_v#.encode('utf-8')
-            jobItem['company'] = company#.encode('utf-8')
-            yield jobItem
+            # jobItem['title'] = title#.encode('utf-8')
+            # jobItem['pay'] = pay#.encode('utf-8')
+            # jobItem['place'] = place#.encode('utf-8')
+            # jobItem['experience'] = experience#.encode('utf-8')
+            # jobItem['edu_v'] = edu_v#.encode('utf-8')
+            # jobItem['company'] = company#.encode('utf-8')
+            # yield jobItem
             # break
             # # 职位招聘人数
             # count = div.xpath('')
