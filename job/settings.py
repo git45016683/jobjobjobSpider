@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-04-23 11:16:10
-LastEditTime: 2021-04-23 11:38:20
+LastEditTime: 2021-04-23 14:27:34
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\settings.py
@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'job.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'job (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.76'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
