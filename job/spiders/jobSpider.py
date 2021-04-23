@@ -1,11 +1,12 @@
 '''
 Author: your name
 Date: 2021-04-23 11:21:01
-LastEditTime: 2021-04-23 16:13:31
+LastEditTime: 2021-04-23 17:25:49
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\spiders\jobSpider.py
 '''
+from job.items import JobItem
 import scrapy
 from scrapy.utils.trackref import print_live_refs
 
@@ -19,8 +20,9 @@ class JobspiderSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        # print(response)
+        print(response)
         job_div_list = response.xpath('//*[@id="pageContent"]/div[4]/a')
+        jobItem = JobItem()
         # print(job_div_list)
         for div in job_div_list:
             title = ""
@@ -59,6 +61,13 @@ class JobspiderSpider(scrapy.Spider):
             # print(company)
 
             print(title + " | " + pay + " | " + place + " | " + experience + " | " + edu_v + " | " + company)
+            jobItem['title'] = title#.encode('utf-8')
+            jobItem['pay'] = pay#.encode('utf-8')
+            jobItem['place'] = place#.encode('utf-8')
+            jobItem['experience'] = experience#.encode('utf-8')
+            jobItem['edu_v'] = edu_v#.encode('utf-8')
+            jobItem['company'] = company#.encode('utf-8')
+            yield jobItem
             # break
             # # 职位招聘人数
             # count = div.xpath('')

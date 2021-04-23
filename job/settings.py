@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-04-23 11:16:10
-LastEditTime: 2021-04-23 14:27:34
+LastEditTime: 2021-04-23 16:47:19
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\settings.py
@@ -73,9 +73,9 @@ LOG_LEVEL = 'ERROR'
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'job.pipelines.JobPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'job.pipelines.JobPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
