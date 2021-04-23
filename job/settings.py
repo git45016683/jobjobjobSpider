@@ -1,3 +1,11 @@
+'''
+Author: your name
+Date: 2021-04-23 11:16:10
+LastEditTime: 2021-04-23 11:38:20
+LastEditors: Please set LastEditors
+Description: In User Settings Edit
+FilePath: \job\job\settings.py
+'''
 # Scrapy settings for job project
 #
 # For simplicity, this file contains only settings considered important or
@@ -17,7 +25,10 @@ NEWSPIDER_MODULE = 'job.spiders'
 #USER_AGENT = 'job (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+
+# 显示指定类型的日志信息
+LOG_LEVEL = 'ERROR'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
