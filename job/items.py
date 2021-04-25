@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-04-23 11:16:10
-LastEditTime: 2021-04-23 16:21:25
+LastEditTime: 2021-04-25 16:08:03
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\items.py
@@ -24,3 +24,5 @@ class JobItem(scrapy.Item):
     edu_v = scrapy.Field()
     experience = scrapy.Field()
     company = scrapy.Field()
+    url = scrapy.Field()
+    job_info = scrapy.Field()
