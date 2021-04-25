@@ -1,7 +1,7 @@
 '''
 Author: your name
 Date: 2021-04-25 11:40:59
-LastEditTime: 2021-04-25 16:36:24
+LastEditTime: 2021-04-25 17:00:58
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: \job\job\spiders\liepinSpider.py
@@ -13,14 +13,19 @@ from job.items import JobItem
 class LiepinspiderSpider(scrapy.Spider):
     name = 'liepinSpider'
     allowed_domains = ['www.liepin.com']
-    start_urls = ['https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_02&jobKind=&industries=050&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7EnBIcYTf8hlCPB-Kl8hs1Zw&d_sfrom=search_fp&d_ckId=6a9549e52f5598efa031eb0bd7ccfa77&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a']
-    # start_urls = ['https://www.liepin.com/a/25713837.shtml']
+
+    url_1 = 'https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_02&jobKind=&industries=050&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7EnBIcYTf8hlCPB-Kl8hs1Zw&d_sfrom=search_fp&d_ckId=6a9549e52f5598efa031eb0bd7ccfa77&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a',
+    url_2 = 'https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_02&jobKind=&industries=060&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7Ey6QKoq-pesOpSo5mI1ngtA&d_sfrom=search_fp&d_ckId=6a27dc50b0e6d6f1d5af4ad15ee7814f&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a',
+    url_3 = 'https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_06&jobKind=&industries=350&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7EOfCBNH25qC8jynqx_BVJtg&d_sfrom=search_fp&d_ckId=3a1ede5a86f32c6a8683cc8ecad3d904&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a',
+    url_4 = 'https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_06&jobKind=&industries=340&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7EswvzFarIYWI0ZnsB_cTJhA&d_sfrom=search_fp&d_ckId=676ce3325ec3dbf039d7964cfcd5cfc4&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a',
+    url_5 = 'https://www.liepin.com/zhaopin/?flushckid=1&compkind=&dqs=050020&pubTime=&pageSize=40&salary=20%2450&compTag=&sortFlag=15&compIds=&subIndustry=&industryType=industry_02&jobKind=&industries=020&compscale=&key=%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86&siTag=G-I_JtdsLVjIcDtYV31HIw%7Ei5ddw4NCmqIqkENsWj_Xiw&d_sfrom=search_fp&d_ckId=c4c50977068d0160994419e4622cb635&d_curPage=0&d_pageSize=40&d_headId=cae87a9ba362c94c1fc09f6725e7094a'
+    start_urls = [''.join(url_2)]
 
     def parse(self, response):
-        # print(response)
+        print(response)
         domain = 'www.liepin.com'
         job_list = response.xpath('//*[@class="sojob-result "]/ul/li')
-        # print(job_list)
+        print(job_list)
         for li in job_list:
             # print(li)
             
@@ -69,7 +74,8 @@ class LiepinspiderSpider(scrapy.Spider):
                 if('://' not in detail_url):
                     detail_url = 'https://' + detail_url
             url = detail_url
-            # print(title + " | " + pay + " | " + place + " | " + experience + " | " + edu_v + " | " + company + " | " + url)
+            
+            print(title + " | " + pay + " | " + place + " | " + experience + " | " + edu_v + " | " + company + " | " + url)
             
             jobItem['title'] = title
             jobItem['pay'] = pay
@@ -92,7 +98,7 @@ class LiepinspiderSpider(scrapy.Spider):
         job_info = ''.join(job_info).strip()
         job_info = job_info
         item['job_info'] = job_info
-        # print(item)
+        print(job_info)
         print('------------------------------------------------------------------------------------')
-        yield item
+        # yield item
 
